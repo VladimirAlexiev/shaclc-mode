@@ -14,9 +14,24 @@ SHACL is very verbose because it expresses shapes as RDF triples.
 Just like there is [shexc-mode](https://github.com/ericprud/shexc-mode-for-emacs) for editing SHEX in Emacs,
 this creates a `shaclc-mode` (in fact this mostly borrows from `shexc-mode`).
 
+## Why SHACLC?
+
+The easiest way to understand the benefits of SHACLC compared to SHACL is by looking at some example shapes from the [euBusinessGraph semantic model](https://github.com/euBusinessGraph/eubg-data/tree/master/model):
+
+- SHEX has a compact dedicated syntax (in addition to JSON and RDF representations): see [ebg-shapes.shex](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shex), 143 lines
+
+![](ebg-shex.png)
+
+- SHACL is very verbose because all constructs are represented in triples: see [ebg-shapes.shacl](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shacl), 504 lines (the shot below shows only 6 properties of Company)
+
+![](ebg-shacl.png)
+
+- SHACLC adds a compact dedicated syntax, so SHACLC schemas are easy to understand: see [ebg-shapes.shaclc](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shaclc), 183 lines (35 lines are prefixes)
+
+![](ebg-shaclc.png)
+
 ## Features
 
-- SHACLC schemas are very compact and easy to understand: compare [ebg-shapes.shacl](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shacl) to [ebg-shapes.shaclc](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shaclc) (and [ebg-shapes.shex](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shex)) from the [euBusinessGraph semantic model](https://github.com/euBusinessGraph/eubg-data/tree/master/model)
 - Syntax highlighting
 
 ![](shaclc-schema.png)
