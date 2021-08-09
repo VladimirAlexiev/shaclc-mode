@@ -49,8 +49,9 @@
         (list (list nil (format "^\\s-*shape\\(?:Class\\)?\\s-+\\(%s\\|%s\\)" IRIREF PrefixedName) 1))))
     (setq-local imenu-generic-expression shaclc-imenu-generic-expression)))
 
-;; Use the shaclc convertor to check shaclc syntax.
-;; https://gitlab.ontotext.com/yasen.marinov/shaclconvert: not open sourced yet but we hope to merge it to TopQuadrant SHACL soon.
+;; Use one of two shaclc parsers/convertor to check shaclc syntax.
+
+;; 1. https://gitlab.ontotext.com/yasen.marinov/shaclconvert: not open sourced yet but we hope to merge it to TopQuadrant SHACL soon.
 ;; https://github.com/TopQuadrant/shacl/issues/98
 ;; This convertor is not part of TQ SHACL but I've put it in the same folder.
 (flycheck-define-checker shaclc-shaclconvert
@@ -60,6 +61,20 @@
   ((error "line " line ":" column " " (message))
    (error "Exception in thread \"main\" java.lang.RuntimeException: " (message)))
   :modes (shaclc-mode))
+
+;; 2. https://jena.apache.org/documentation/shacl/#command-line
+(flycheck-define-checker shaclc-jena
+  "shaclc syntax checker using jena shacl"
+  :command ("sh" "shacl" source)
+  :error-patterns
+  ((error "Lexical error at line " line ", column " column ".  " (message))
+   (error "Encountered " (message (minimal-match (one-or-more not-newline))) " at line " line ", column " column "."
+          ;; "\nWas expecting one of: " (message (one-or-more anything)) ; allow newline; but can't concat two (message)'s
+          ))
+  :modes (shaclc-mode))
+
+;; Use one or the other:
 (add-to-list 'flycheck-checkers 'shaclc-shaclconvert)
+;; (add-to-list 'flycheck-checkers 'shaclc-jena)
 
 (provide 'shaclc-mode)

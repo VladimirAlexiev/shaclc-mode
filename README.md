@@ -18,15 +18,15 @@ this creates a `shaclc-mode` (in fact this mostly borrows from `shexc-mode`).
 
 The easiest way to understand the benefits of SHACLC compared to SHACL is by looking at some example shapes from the [euBusinessGraph semantic model](https://github.com/euBusinessGraph/eubg-data/tree/master/model):
 
-- SHEX has a compact dedicated syntax (in addition to JSON and RDF representations): see [ebg-shapes.shex](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shex), 143 lines
+- SHEX has a compact dedicated syntax (in addition to JSON and RDF representations): see [ebg-shapes.shex](ebg-shapes.shex), 143 lines
 
 ![](ebg-shex.png)
 
-- SHACL is very verbose because all constructs are represented in triples: see [ebg-shapes.shacl](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shacl), 504 lines (the shot below shows only 6 properties of Company)
+- SHACL is very verbose because all constructs are represented in triples: see [ebg-shapes.shacl](ebg-shapes.shacl), 504 lines (the shot below shows only 6 properties of Company)
 
 ![](ebg-shacl.png)
 
-- SHACLC adds a compact dedicated syntax, so SHACLC schemas are easy to understand: see [ebg-shapes.shaclc](https://github.com/euBusinessGraph/eubg-data/blob/master/model/ebg-shapes.shaclc), 183 lines (35 lines are prefixes)
+- SHACLC adds a compact dedicated syntax, so SHACLC schemas are easy to understand: see [ebg-shapes.shaclc](ebg-shapes.shaclc), 183 lines (35 lines are prefixes)
 
 ![](ebg-shaclc.png)
 
@@ -59,6 +59,18 @@ The easiest way to understand the benefits of SHACLC compared to SHACL is by loo
 - Syntax validation is implemented using `flycheck` and the [shaclconvert](https://gitlab.ontotext.com/yasen.marinov/shaclconvert) tool.
   - It is not open sourced yet but we hope to merge it to TopQuadrant SHACL soon.
   - Talk to me if you want to use it now
+
+## Jena SHACL
+
+Starting June 2021, Jena now includes SHACL and SHACLC processing:
+- Documentation: https://jena.apache.org/documentation/shacl/
+- Source: https://github.com/apache/jena/tree/main/jena-shacl
+- Tests: https://github.com/apache/jena/tree/main/jena-shacl/src/test
+  - SHACLC tests: https://github.com/apache/jena/tree/main/jena-shacl/src/test/files/shaclc-valid
+
+However:
+- There is currently a bug https://issues.apache.org/jira/browse/JENA-2144
+- See https://issues.apache.org/jira/issues/?jql=reporter=vladimir.alexiev for more issues posted by me
 
 ## Todo
 
