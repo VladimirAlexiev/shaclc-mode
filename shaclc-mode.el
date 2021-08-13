@@ -65,7 +65,7 @@
 ;; 2. https://jena.apache.org/documentation/shacl/#command-line
 (flycheck-define-checker shaclc-jena
   "shaclc syntax checker using jena shacl"
-  :command ("sh" "shacl" source)
+  :command ("sh" "shacl" "parse" source)
   :error-patterns
   ((error "Lexical error at line " line ", column " column ".  " (message))
    (error "Encountered " (message (minimal-match (one-or-more not-newline))) " at line " line ", column " column "."
