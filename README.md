@@ -36,7 +36,7 @@ The easiest way to understand the benefits of SHACLC compared to SHACL is by loo
 
 ![](shaclc-schema.png)
 
-- Syntax checking using `shaclconvert` and `flycheck`
+- Syntax checking using `flycheck` and `shaclconvert` (see [TQ SHACL](#tq-shacl) below)
 
 ![](shaclc-flyCheck-validation.png)
 
@@ -56,21 +56,24 @@ The easiest way to understand the benefits of SHACLC compared to SHACL is by loo
 (add-to-list 'auto-mode-alist '("\\.\\(shaclc\\|shc\\)$" . shaclc-mode))
 ```
 
-- Syntax validation is implemented using `flycheck` and the [shaclconvert](https://gitlab.ontotext.com/yasen.marinov/shaclconvert) tool.
-  - It is not open sourced yet but we hope to merge it to TopQuadrant SHACL soon.
-  - Talk to me if you want to use it now
+## TQ SHACL
+
+The TQ SHACL API implements SHACLC since June 2000.
+
+Ontotext's [shaclconvert](https://gitlab.ontotext.com/yasen.marinov/shaclconvert) tool is a simple CLI on top of the TQ API.
+It is not open sourced yet but we hope to merge it to TQ SHACL in the future.
+
+Bugs and issues: https://github.com/TopQuadrant/shacl/search?q=shaclc&type=issues
 
 ## Jena SHACL
 
-Starting June 2021, Jena now includes SHACL and SHACLC processing:
+Starting June 2020, Jena now includes SHACL and SHACLC processing in `riot` and a new command `shacl`:
 - Documentation: https://jena.apache.org/documentation/shacl/
 - Source: https://github.com/apache/jena/tree/main/jena-shacl
 - Tests: https://github.com/apache/jena/tree/main/jena-shacl/src/test
   - SHACLC tests: https://github.com/apache/jena/tree/main/jena-shacl/src/test/files/shaclc-valid
 
-However:
-- There is currently a bug https://issues.apache.org/jira/browse/JENA-2144
-- See https://issues.apache.org/jira/issues/?jql=reporter=vladimir.alexiev for more issues posted by me
+Bugs and issues: https://issues.apache.org/jira/issues/?jql=text~shaclc
 
 ## Todo
 
